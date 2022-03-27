@@ -1,0 +1,32 @@
+{% extends 'back.html.twig' %}
+{% block body %}
+<div class="row"> 
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ajouter une Offre</h4>
+                <p class="card-description"> Ajout</p>
+               {{ form_start(form) }}
+                {{ form_row(form.nomOffre) }}
+                {{ form_row(form.prixOffre) }}
+                {% if activites|length >0 %}
+                    {{ form_row(form.activites) }}
+                {% else %}
+                    {{ form_label(form.activites) }} <a href="{{ path('newActivite') }}"> ajouter une activité</a><br>
+                {% endif %}
+                {% if destinations|length >0 %}
+                    {{ form_row(form.destination) }}
+                {% else %}
+                    {{ form_label(form.destination) }} <a href="{{ path('newDestination') }}"> ajouter une destination</a>
+                {% endif %}
+                {{ form_row(form.image) }}
+                {{ form_row(form.dateDebut) }}
+                {{ form_row(form.dateFin) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="pt-5" id="destination">
+            <div class="container">
+                <div class="position-absolute start-100 bottom-0 translate-middle-x d-none d-xl-block ms-xl-n4"><img src="assets/img/dest/shape.svg" alt="destination" /></div>
+                <div class="mb-7 text-center">
+                    <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">Top Offres</h3>
+                </div>
+                <div class="row">
+
+
+                        {% for off in Offres %}
+                        <div class="card overflow-hidden shadow col-sm-4" style="margin-left: 10px"> <a href="{{ path('nbvues',{'id':off.id}) }}"><img class="card-img-top" src="{{  asset('uploads/images/'~ off.image) }}" alt="{{ off.nomOffre }}" width="400" height="400"/></a>
+                            <div class="card-body py-4 px-3">
+                                <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
+                                    <h4 class="text-secondary fw-medium"><a class="link-900 text-decoration-none stretched-link" href="{{ path('nbvues',{'id':off.id}) }}">{{ off.nomOffre }}</a></h4><span class="fs-1 fw-medium">{{ off.prixOffre }} DT</span>
+                                </div>
+                                {% set difference = date(off.dateFin).diff(date(off.dateDebut)) %}
+                                {% set duree = difference.days %}
+                                <div class="d-flex align-items-center"> <img src="assets/img/dest/navigation.svg" style="margin-right: 14px" width="20" alt="navigation" /><span class="fs-0 fw-medium"> {{ duree }}Days Trip</span></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+            </div>
+    </section>
+{% endblock %}

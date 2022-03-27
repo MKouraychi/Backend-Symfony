@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="booking">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="mb-4 text-start">
+
+                        <h3 class="fs-xl-10 fs-lg-8 fs-7 fw-bold font-cursive text-capitalize">{{ offre.nomOffre }}</h3>
+                    </div>
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="bg-primary me-sm-4 me-3 p-3" style="border-radius: 13px"> </div>
+                        <div class="flex-1">
+                            <h5 class="text-secondary fw-bold fs-0">prix de l'offre</h5>
+                            <p>{{ offre.prixOffre }}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="bg-danger me-sm-4 me-3 p-3" style="border-radius: 13px"> </div>
+                        <div class="flex-1">
+                            <h5 class="text-secondary fw-bold fs-0">Destination</h5>
+                            <p>{{ offre.destination.pays}} <br class="d-none d-sm-block"> {{ offre.destination.ville }}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="bg-info me-sm-4 me-3 p-3" style="border-radius: 13px"></div>
+                        <div class="flex-1">
+                            <h5 class="text-secondary fw-bold fs-0">un voyage</h5>
+                            <p>du {{ offre.dateDebut|date('d-m-Y') }}<br class="d-none d-sm-block"> jusqu'au {{ offre.dateFin|date('d-m-Y') }}</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-5">
+
+                        <div class="flex-1">
+                            <img src="{{ asset('uploads/images/'~ offre.image) }}" height="700px" width="500px">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="bg-info me-sm-4 me-3 p-3" style="border-radius: 13px"></div>
+                        <div class="flex-1">
+
+                            <p><strong>{{offre.nbdevues }} personnes</strong> ont vus cette offre</p>
+                        </div>
+                    </div>
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{ path('participate',{'id':offre.id}) }}" role="button">participer à cette offre</a>
+                    {% endif %}
+                </div>
+        </div>
+    </section>
+{% endblock %}

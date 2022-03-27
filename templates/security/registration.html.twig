@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ form_start(form) }}
+{{ form_row(form.Nom,{'attr': {'placeholder':'Votre Nom...'}}) }}
+{{ form_row(form.Prenom,{'attr': {'placeholder':'Votre Prenom...'}})  }}
+{{ form_row(form.Email,{'attr': {'placeholder':'Votre Email...'}}) }}
+{{ form_row(form.numero,{'attr': {'placeholder':'Votre Numero...'}}) }}
+{{ form_row(form.Password,{'attr': {'placeholder':'Votre Password...'}})  }}
+{{ form_row(form.Confirm_Password,{'attr': {'placeholder':'Confirmer votre Password...'}})  }}
+<button type="submit" class="btn btn-success">Inscription</button>
+{{ form_end(form) }}
+{% endblock %}

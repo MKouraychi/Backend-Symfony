@@ -1,0 +1,40 @@
+{% extends 'back.html.twig' %}
+{% block body %}
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <button class="btn btn-danger btn-rounded btn-fw btn-icon-text"><a href="{{ path('newDestination') }}">Ajouter une nouvelle destination</a></button>
+                <h4 class="card-title">Toutes les destinations</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th> pays </th>
+                            <th> ville</th>
+                            <th> image </th>
+                            <th> Actions </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for offre in destionations %}
+                            <tr>
+
+                                <td>{{offre.pays}}</td>
+                                <td>
+                                    {{offre.ville}}
+                                </td>
+                                <td><img src="{{ asset('uploads/images/'~ offre.image) }}" alt="{{ offre.image }}"/></td>
+                                <td> <a href="{{ path('deleteDest',{'id':offre.id}) }}"><i class="mdi mdi-delete"></i></a>
+                                    <a href="{{ path('updateDest',{'id':offre.id}) }}"><i class="mdi mdi-ambulance"></i></a></td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
